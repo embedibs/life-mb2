@@ -1,6 +1,9 @@
 # Life-mb2
 
-Ethan Dibble
+Conway's Game of Life for the BBC Micro:Bit V2.
+
+> Ethan Dibble  
+> January 2026
 
 ## Tool Setup
 
