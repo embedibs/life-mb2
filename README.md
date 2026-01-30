@@ -11,6 +11,12 @@ cargo install cargo-binutils
 cargo install --locked probe-rs-tools
 ```
 
+## Build and Run
+
+```
+cargo embed
+```
+
 ## Features
 
 Compiling with `--feature slow` will run the game at 1 frame per second
