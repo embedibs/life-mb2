@@ -15,3 +15,10 @@ cargo install --locked probe-rs-tools
 
 Compiling with `--feature slow` will run the game at 1 frame per second
 instead of the normal 10 frames per second.
+
+
+## License
+
+This project is licensed under the [MIT License][License].
+
+[License]: ./LICENSE
