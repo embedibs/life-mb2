@@ -16,6 +16,9 @@ rtt-target = "0.6"
 version = "0.7"
 features = ["inline-asm", "critical-section-single-core"]
 
+[features]
+slow = []
+
 [[bin]]
 name = "life-mb2"
 path = "src/main.rs"
