@@ -50,10 +50,7 @@ impl Counter {
     }
 
     fn is_zero(&self) -> bool {
-        match self.0 {
-            0 => true,
-            _ => false,
-        }
+        matches!(self.0, 0)
     }
 }
 
