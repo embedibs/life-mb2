@@ -20,7 +20,11 @@ use life::*;
 
 use cortex_m_rt::entry;
 use embedded_hal::digital::InputPin;
-use microbit::{board::Board, display::blocking::Display, hal::Timer};
+use microbit::{
+    board::Board,
+    display::blocking::Display,
+    hal::{Rng as halRng, Timer},
+};
 use nanorand::{Pcg64, Rng};
 use panic_halt as _;
 use rtt_target::{rprintln, rtt_init_print};
@@ -66,7 +70,9 @@ fn main() -> ! {
     let mut button_b = board.buttons.button_b;
 
     let fb: &mut Buf = &mut Default::default();
-    let rng = &mut nanorand::Pcg64::new_seed(5);
+
+    let seed: u128 = halRng::new(board.RNG).random_u32().into();
+    let rng = &mut nanorand::Pcg64::new_seed(seed);
 
     // B-button counter:
     // If the b-button is pressed, reset this counter;
