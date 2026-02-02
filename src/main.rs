@@ -75,12 +75,12 @@ fn main() -> ! {
     let rng = &mut nanorand::Pcg64::new_seed(seed);
 
     // B-button counter:
-    // If the b-button is pressed, reset this counter;
+    // If the b-button is pressed, reset this counter to 5;
     // otherwise, decrement this counter every frame.
     let mut c_button_b = Counter(0);
 
     // Reset counter:
-    // If any action is performed, reset this counter;
+    // If any action is performed, reset this counter to 5;
     // otherwise if the board is empty, decrement this counter every frame.
     let mut c_reset = Counter(5);
 
