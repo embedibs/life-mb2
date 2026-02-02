@@ -48,8 +48,13 @@ There are two counters: the B button and reset counters. Both are measured in
 frames, but are set and decremented under different conditions. Pressing the B
 button will set the associated counter and it will decrement every frame.
 Pressing any button will set the reset counter and it will decrement when the
-board is empty. These counters simply amount to additional match guards to check
-if they are zero.  
+board is empty. These counters simply amount to additional match guards that
+check if they are zero.  
+
+Each step of Life happens at the start of the game loop before input is handled
+then displayed. Otherwise, pressing the B button will most often appear to only
+turn every cell off due to overpopulation. Handling input after running a step
+of Life lets you at least see the inverted board for a frame.  
 
 ## License
 
