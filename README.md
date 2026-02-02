@@ -22,10 +22,12 @@ cargo embed
 
 ## Game Flow
 
-- Pressing the A button will randomize the board.
+- Start with a random board.
 
-- Pressing the B button will invert the board and the B button will then be
-  ignored for 5 frames.
+- Pressing the A button will re-randomize the board.
+
+- Pressing the B button will invert the board and then B button will be ignored 
+  for 5 frames.
 
   > This option is not very interesting as the
   > cells often die off immediately due to overpopulation.
