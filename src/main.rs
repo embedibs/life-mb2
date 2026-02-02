@@ -27,11 +27,15 @@ use rtt_target::{rprintln, rtt_init_print};
 
 type Buf = [[u8; 5]; 5];
 
-#[cfg(not(feature = "slow"))]
-const FRAME_TIME: u32 = 100;
-#[cfg(feature = "slow")]
-const FRAME_TIME: u32 = 1000;
+cfg_if::cfg_if! {
+    if #[cfg(feature = "slow")] {
+        const FRAME_TIME: u32 = 1000;
+    } else {
+        const FRAME_TIME: u32 = 100;
+    }
+}
 
+/// Counter struct to keep track of frames while polling input.
 struct Counter(u8);
 
 impl Counter {
@@ -119,16 +123,17 @@ fn main() -> ! {
         display.show(&mut timer, *fb, FRAME_TIME);
 
         c_button_b.dec();
-        display.clear();
     }
 }
 
+/// Randomize display.
 fn randomize(fb: &mut Buf, rng: &mut Pcg64) {
     fb.iter_mut()
         .flat_map(|row| row.iter_mut())
         .for_each(|px| *px = rng.generate::<bool>() as u8);
 }
 
+/// Invert display.
 fn invert(fb: &mut Buf) {
     fb.iter_mut()
         .flat_map(|row| row.iter_mut())
