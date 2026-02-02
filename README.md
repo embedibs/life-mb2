@@ -38,6 +38,18 @@ cargo embed
 - Compiling with `--feature slow` will run the game at 1 frame per second
 instead of the normal 10 frames per second.
 
+## Notes
+
+Button presses are polled every frame, which works fine since counters are
+measured in frames. And the 100ms frame rate is not too fast for polling. You
+have to push the buttons on this board pretty hard though.  
+
+There are two counters: the B button and reset counters. Both are measured in
+frames, but are set and decremented under different conditions. Pressing the B
+button will set the associated counter and it will decrement every frame.
+Pressing any button will set the reset counter and it will decrement when the
+board is empty. These counters simply amount to additional match guards to check
+if they are zero.  
 
 ## License
 
