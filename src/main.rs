@@ -131,14 +131,18 @@ fn main() -> ! {
 
 /// Randomize display.
 fn randomize(fb: &mut Buf, rng: &mut Pcg64) {
-    fb.iter_mut()
-        .flat_map(|row| row.iter_mut())
-        .for_each(|px| *px = rng.generate::<bool>() as u8);
+    for row in fb {
+        for px in row {
+            *px = rng.generate::<bool>() as u8;
+        }
+    }
 }
 
 /// Invert display.
 fn invert(fb: &mut Buf) {
-    fb.iter_mut()
-        .flat_map(|row| row.iter_mut())
-        .for_each(|px| *px ^= 1u8);
+    for row in fb {
+        for px in row {
+            *px ^= 1u8;
+        }
+    }
 }
